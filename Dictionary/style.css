@@ -1,0 +1,157 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*  :not(i){
+    font-family: "Caveat Brush", cursive;
+    font-size: large;
+}
+
+body{
+    background-image: url('question-marks.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container{
+    background-color: rgba(177,129,106,255);
+    border-radius: 2.5rem;
+    width: 60%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    margin: 15% auto;
+    top: 50%;
+    bottom: 50%;
+    padding: 80px 50px;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+}
+
+.search-box{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-box input{
+    padding: 10px;
+    width: 70%;
+    background-color: white;
+    border-radius: 1.5rem;
+    outline: none;
+    border: 3px solid rgb(187, 148, 87);
+    font-size: large;
+}
+
+.search-box button{
+    width: 20%;
+    padding: 15px 0;
+    border-radius: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: rgba(156,96,72,255);
+    color: white;
+}
+
+
+.result h3{
+    font-size: 30px;
+    color: rgb(67, 40, 24);
+}
+
+.result .word{
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 20px;
+    
+}
+
+.result button{
+    background-color: transparent;
+    color: rgb(187, 148, 87);
+    border: none;
+    outline: none;
+    font-size: 20px; 
+}
+
+.result .details{
+    display: flex;
+    gap: 10px;
+    color: #b3b6d4;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.word-meaning{
+    color: #575a7b;
+    margin-bottom: 15px;
+}
+
+.word-ex{
+    /* font-style: italic; */
+    color: #575a7b;
+    border-left: 5px solid;
+    padding-left: 10px;
+    color: white;
+}
+
+.error{
+    margin-top: 80px;
+    text-align:center;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    color: rgb(67, 40, 24);
+    text-decoration: double;
+    font-size: 5rem;
+}
+
+/* Flashcard Styling */
+.flashcard {
+    margin:auto;
+    width: 600px;
+    padding: 20px;
+    height: 200px;
+    background-color: rgba(177, 129, 106, 255);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: transform 0.5s;
+}
+
+/* Button Styling */
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.btns button {
+    padding: 10px 15px;
+    border: none;
+    background: rgba(156, 96, 72, 255);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btns button:hover {
+    background: rgba(112, 68, 43, 255);
+}
+

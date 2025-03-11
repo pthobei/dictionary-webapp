@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <title>Dictionary</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="search-box">
+            <input type="text" placeholder="What do you want to search..?" id="input-word">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <audio id="sound"></audio>
+    </div>
+
+
+    <h2>Flashcards</h2>
+
+    <div id="flashcard" class="flashcard">Click to flip</div>
+
+    <div class="btns">
+        <button id="next" onclick="nextCard()">Next</button>
+        <button id="shuffle-card" onclick="shuffleCards()">Shuffle</button>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
