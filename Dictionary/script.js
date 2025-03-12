@@ -1,4 +1,5 @@
 const dictUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+const randomWordUrl = "https://random-word-api.herokuapp.com/word";
 const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const search = document.getElementById("search-btn");
@@ -34,13 +35,50 @@ function nextCard() {
     updateCard();
 }
 
-//Shuffle the cards
+//get previous card
 
-function shuffleCards() {
-    currentIndex = 0;
-    words.sort(() => Math.random() - 0.5);
+function prevCard() {
+    currentIndex = (currentIndex - 1 + words.length) % words.length;
     flipped = false;
     updateCard();
+}
+
+//Shuffle the cards and get a random word from the API
+
+function shuffleCards() {
+    fetchValidWord();
+}
+
+// Recursive function to keep fetching until a valid word is found
+function fetchValidWord() {
+    fetch(randomWordUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            const randomWord = data[0];
+            return fetch(`${dictUrl}${randomWord}`);
+        })
+        .then((response) => {
+            if (!response.ok) {
+                // If word not found, try again
+                fetchValidWord();
+                throw new Error("Word not found, trying another...");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const word = data[0].word;
+            const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+            
+            if (meaning) {
+                card.textContent = `${word}: ${meaning}`;
+            } else {
+                // Retry if no valid meaning found
+                fetchValidWord();
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
 // Attach shuffle button functionality
