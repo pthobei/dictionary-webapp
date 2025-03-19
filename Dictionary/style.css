@@ -150,7 +150,24 @@ h2{
     border-radius: 5px;
 }
 
-/* .btns button:hover {
-    background: rgba(112, 68, 43, 255);
-} */
 
+
+.quiz-container {
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.correct { background: green; }
+.wrong { background: red; }

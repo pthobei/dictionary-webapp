@@ -4,6 +4,7 @@ const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const search = document.getElementById("search-btn");
 
+//Words for the flashcards
 const words = [{ word: "Ephemeral", meanings: "Lasting for a very short time", example: "The ephemeral nature of fashion trends" },
 
                 { word: "Serendipity", meanings: "The occurrence and development of events by chance in a happy or beneficial way", example: "A fortunate stroke of serendipity" },
@@ -11,6 +12,17 @@ const words = [{ word: "Ephemeral", meanings: "Lasting for a very short time", e
                 { word: "Limerence", meanings: "The state of being infatuated or obsessed with another person, typically experienced involuntarily and characterized by a strong desire for reciprocation of one's feelings", example: "Limerence is a state of mind which results from a romantic attraction to another person combined with an overwhelming, obsessive need to have one's feelings reciprocated" },
               ];
 
+//quiz data
+const quizData = [
+    { word: "Ebullient", correct: "Cheerful & full of energy", options: ["Calm & quiet", "Cheerful & full of energy", "Lazy", "Dull"] },
+    { word: "Obfuscate", correct: "Make something unclear", options: ["Make something unclear", "Clarify", "Simplify", "Ignore"] },
+    { word: "Ubiquitous", correct: "Present everywhere", options: ["Rare", "Present everywhere", "Dangerous", "Unknown"] }
+];
+
+let currentQuestionIndex = 0;
+const questionText = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const resultText = document.getElementById("result");
 
 let currentIndex = 0;
 let flipped = false;
@@ -129,6 +141,36 @@ function dictionaryActivity() {
             result.innerHTML = "Sorry, we couldn't find that word.";
         });
 }
+
+function loadQuestion() {
+    const q = quizData[currentQuestionIndex];
+    questionText.textContent = `What does "${q.word}" mean?`;
+    optionsContainer.innerHTML = "";
+    q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(btn, option, q.correct);
+        optionsContainer.appendChild(btn);
+    });
+}
+
+function checkAnswer(btn, selected, correct) {
+    if (selected === correct) {
+        btn.classList.add("correct");
+        resultText.textContent = "✅ Correct!";
+    } else {
+        btn.classList.add("wrong");
+        resultText.textContent = "❌ Wrong! The correct answer is: " + correct;
+    }
+}
+
+function nextQuestion() {
+    currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+    resultText.textContent = "";
+    loadQuestion();
+}
+
+loadQuestion(); // Load first question
 
 // Function to play sound
 function playSound() {
